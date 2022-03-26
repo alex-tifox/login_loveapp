@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:login_loveapp/locator.dart';
 
 void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 
