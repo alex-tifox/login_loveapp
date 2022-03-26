@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:login_loveapp/common/theme/theme.dart';
 import 'package:login_loveapp/locator.dart';
+import 'package:login_loveapp/screens/login_screen.dart';
 
 void main() {
   setupLocator();
@@ -13,10 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Text('Start'),
+      theme: loveappTheme,
+      home: LoginScreen(),
     );
   }
 }
