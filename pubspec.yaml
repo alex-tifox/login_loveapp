@@ -21,10 +21,30 @@ dev_dependencies:
     sdk: flutter
   freezed_annotation: ^1.1.0
   flutter_lints: ^1.0.0
+  flutter_gen_runner: ^4.1.6
   injectable_generator: ^1.5.3
   json_serializable: ^6.1.4
   logger: ^1.1.0
   mockito: ^5.0.17
+
+flutter_gen:
+  integrations:
+    flutter_svg: true
+    flare_flutter: false
+    rive: false
+
+  assets:
+    enabled: true
+    # Optional
+    # Set to true if you want this package to be a package dependency
+    # See: https://flutter.dev/docs/development/ui/assets-and-images#from-packages
+    package_parameter_enabled: false
+    # Optional
+    # Avaliable values:
+    # - camel-case
+    # - snake-case
+    # - dot-delimiter
+    style: dot-delimiter
 
 flutter:
   uses-material-design: true
