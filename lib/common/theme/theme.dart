@@ -4,6 +4,20 @@ import 'package:login_loveapp/common/theme/color.dart';
 final loveappTheme = ThemeData(
   brightness: Brightness.light,
   colorScheme: _colorScheme,
+  textTheme: const TextTheme(
+    bodyText1: TextStyle(
+      color: Colors.white,
+      fontSize: 14,
+    ),
+    headline4: TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+    ),
+    button: TextStyle(
+      color: Colors.white,
+      fontSize: 14,
+    ),
+  ),
 );
 
 const _colorScheme = ColorScheme(
