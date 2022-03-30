@@ -74,6 +74,7 @@ class _LoverTextFieldState extends State<LoverTextField> {
             ),
             hintStyle: const TextStyle(
               color: Colors.white,
+              fontSize: 14,
             ),
             hintText: widget.hintText,
             suffixIcon: widget.isPasswordField
