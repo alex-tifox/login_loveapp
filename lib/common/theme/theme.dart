@@ -18,4 +18,5 @@ const _colorScheme = ColorScheme(
   onBackground: LoveappColor.onBackground,
   surface: LoveappColor.onSurface,
   onSurface: LoveappColor.onSurface,
+  outline: LoveappColor.outline,
 );

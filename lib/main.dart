@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:login_loveapp/common/theme/theme.dart';
 import 'package:login_loveapp/locator.dart';
+import 'package:login_loveapp/providers/login_provider.dart';
 import 'package:login_loveapp/screens/login_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   setupLocator();
@@ -16,7 +18,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: loveappTheme,
-      home: LoginScreen(),
+      home: SafeArea(
+        child: ChangeNotifierProvider(
+          create: (_) => LoginProvider(() {}),
+          child: const LoginScreen(),
+        ),
+      ),
     );
   }
 }
