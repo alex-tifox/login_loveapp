@@ -26,10 +26,8 @@ class _$LoginResultTearOff {
     return const InProgress();
   }
 
-  Failure failure({required String description}) {
-    return Failure(
-      description: description,
-    );
+  Failure failure() {
+    return const Failure();
   }
 }
 
@@ -42,21 +40,21 @@ mixin _$LoginResult {
   TResult when<TResult extends Object?>({
     required TResult Function() notReady,
     required TResult Function() inProgress,
-    required TResult Function(String description) failure,
+    required TResult Function() failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? notReady,
     TResult Function()? inProgress,
-    TResult Function(String description)? failure,
+    TResult Function()? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notReady,
     TResult Function()? inProgress,
-    TResult Function(String description)? failure,
+    TResult Function()? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,7 +138,7 @@ class _$NotReady implements NotReady {
   TResult when<TResult extends Object?>({
     required TResult Function() notReady,
     required TResult Function() inProgress,
-    required TResult Function(String description) failure,
+    required TResult Function() failure,
   }) {
     return notReady();
   }
@@ -150,7 +148,7 @@ class _$NotReady implements NotReady {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? notReady,
     TResult Function()? inProgress,
-    TResult Function(String description)? failure,
+    TResult Function()? failure,
   }) {
     return notReady?.call();
   }
@@ -160,7 +158,7 @@ class _$NotReady implements NotReady {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notReady,
     TResult Function()? inProgress,
-    TResult Function(String description)? failure,
+    TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (notReady != null) {
@@ -249,7 +247,7 @@ class _$InProgress implements InProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() notReady,
     required TResult Function() inProgress,
-    required TResult Function(String description) failure,
+    required TResult Function() failure,
   }) {
     return inProgress();
   }
@@ -259,7 +257,7 @@ class _$InProgress implements InProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? notReady,
     TResult Function()? inProgress,
-    TResult Function(String description)? failure,
+    TResult Function()? failure,
   }) {
     return inProgress?.call();
   }
@@ -269,7 +267,7 @@ class _$InProgress implements InProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notReady,
     TResult Function()? inProgress,
-    TResult Function(String description)? failure,
+    TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -321,7 +319,6 @@ abstract class InProgress implements LoginResult {
 abstract class $FailureCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
       _$FailureCopyWithImpl<$Res>;
-  $Res call({String description});
 }
 
 /// @nodoc
@@ -332,59 +329,35 @@ class _$FailureCopyWithImpl<$Res> extends _$LoginResultCopyWithImpl<$Res>
 
   @override
   Failure get _value => super._value as Failure;
-
-  @override
-  $Res call({
-    Object? description = freezed,
-  }) {
-    return _then(Failure(
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$Failure implements Failure {
-  const _$Failure({required this.description});
-
-  @override
-  final String description;
+  const _$Failure();
 
   @override
   String toString() {
-    return 'LoginResult.failure(description: $description)';
+    return 'LoginResult.failure()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Failure &&
-            const DeepCollectionEquality()
-                .equals(other.description, description));
+        (other.runtimeType == runtimeType && other is Failure);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(description));
-
-  @JsonKey(ignore: true)
-  @override
-  $FailureCopyWith<Failure> get copyWith =>
-      _$FailureCopyWithImpl<Failure>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() notReady,
     required TResult Function() inProgress,
-    required TResult Function(String description) failure,
+    required TResult Function() failure,
   }) {
-    return failure(description);
+    return failure();
   }
 
   @override
@@ -392,9 +365,9 @@ class _$Failure implements Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? notReady,
     TResult Function()? inProgress,
-    TResult Function(String description)? failure,
+    TResult Function()? failure,
   }) {
-    return failure?.call(description);
+    return failure?.call();
   }
 
   @override
@@ -402,11 +375,11 @@ class _$Failure implements Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notReady,
     TResult Function()? inProgress,
-    TResult Function(String description)? failure,
+    TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(description);
+      return failure();
     }
     return orElse();
   }
@@ -447,9 +420,5 @@ class _$Failure implements Failure {
 }
 
 abstract class Failure implements LoginResult {
-  const factory Failure({required String description}) = _$Failure;
-
-  String get description;
-  @JsonKey(ignore: true)
-  $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
+  const factory Failure() = _$Failure;
 }

@@ -20,7 +20,6 @@ class LoginProvider extends ChangeNotifier {
   final passwordTextEditingController = TextEditingController();
 
   Future<void> attemptLogin() async {
-    // TODO: Add and figure out the mechanism of handling errors to text fields
     final _currentEmail = emailTextEditingController.text.trim();
     final _currentPassword = passwordTextEditingController.text;
 
@@ -43,14 +42,17 @@ class LoginProvider extends ChangeNotifier {
 
     if (error != null) {
       _state = _state.copyWith(
-        result: login.LoginResult.failure(description: error),
+        result: const login.LoginResult.failure(),
       );
       notifyListeners();
     } else {
+      _navigateAfterLogin();
+      emailTextEditingController.text = '';
+      passwordTextEditingController.text = '';
       _state = _state.copyWith(
         result: const login.LoginResult.notReady(),
       );
-      _navigateAfterLogin();
+      notifyListeners();
     }
   }
 }

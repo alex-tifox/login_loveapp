@@ -6,7 +6,5 @@ part 'login_result.freezed.dart';
 class LoginResult with _$LoginResult {
   const factory LoginResult.notReady() = NotReady;
   const factory LoginResult.inProgress() = InProgress;
-  const factory LoginResult.failure({
-    required String description,
-  }) = Failure;
+  const factory LoginResult.failure() = Failure;
 }
