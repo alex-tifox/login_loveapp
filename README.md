@@ -4,13 +4,12 @@ Test use case for user login screen with mocked logic
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+For demonstration, there was implemented such requirements:
+- Implemented back navigation from Success to Login screen
+- Implemented the “show password” functionality as shown in the mockups
+- Handled error while authorizing and communicating them to the user
+- Informed the user about the process of asynchronous operations - loader is different from the one suggested
+- Implemented data validation for text fields - email with the regexp and the simple one for the password
+- Implemented animation of the loader and default 'uppear from the bottom' material transition between screens
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Unit tests where added to test auth service
