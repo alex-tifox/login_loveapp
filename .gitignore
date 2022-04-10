@@ -31,6 +31,8 @@ pubspec.lock
 .pub-cache/
 .pub/
 /build/
+*.freezed.dart
+/lib/locator.config.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
