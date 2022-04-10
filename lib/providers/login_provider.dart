@@ -6,20 +6,19 @@ import 'package:login_loveapp/models/login_state.dart';
 import 'package:login_loveapp/services/auth_service.dart';
 
 class LoginProvider extends ChangeNotifier {
-  LoginProvider(
-    this._navigateAfterLogin,
-  );
+  LoginProvider();
 
   LoginState _state = const LoginState(result: login.LoginResult.notReady());
   LoginState get state => _state;
 
   final AuthService _authService = locator<AuthService>();
-  final VoidCallback _navigateAfterLogin;
 
   final emailTextEditingController = TextEditingController();
   final passwordTextEditingController = TextEditingController();
 
-  Future<void> attemptLogin() async {
+  Future<void> attemptLogin({
+    required VoidCallback navigateAfterLogin,
+  }) async {
     final _currentEmail = emailTextEditingController.text.trim();
     final _currentPassword = passwordTextEditingController.text;
 
@@ -46,7 +45,7 @@ class LoginProvider extends ChangeNotifier {
       );
       notifyListeners();
     } else {
-      _navigateAfterLogin();
+      navigateAfterLogin();
       emailTextEditingController.text = '';
       passwordTextEditingController.text = '';
       _state = _state.copyWith(

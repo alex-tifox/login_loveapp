@@ -3,6 +3,8 @@ import 'package:login_loveapp/common/extensions/string_validation.dart';
 import 'package:login_loveapp/gen/assets.gen.dart';
 import 'package:login_loveapp/models/login_result.dart';
 import 'package:login_loveapp/providers/login_provider.dart';
+import 'package:login_loveapp/screens/success_screen.dart';
+import 'package:login_loveapp/widgets/failed_login_dialog.dart';
 import 'package:login_loveapp/widgets/loveapp_spacer.dart';
 import 'package:login_loveapp/widgets/lover_button.dart';
 import 'package:login_loveapp/widgets/lover_text_field.dart';
@@ -25,27 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (loginState.state.result == const LoginResult.failure()) {
         showDialog(
           context: context,
-          builder: (_) => AlertDialog(
-            backgroundColor: Theme.of(context).colorScheme.background,
-            title: Text(
-              'Log in error',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            content: Text(
-              'There was an  error on login attempt. Try again.',
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-            actionsPadding: const EdgeInsets.symmetric(horizontal: 10),
-            actions: [
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(
-                  'OK',
-                  style: Theme.of(context).textTheme.button,
-                ),
-              )
-            ],
-          ),
+          builder: (_) => const FailedLoginDialog(),
         );
       }
     });
@@ -162,7 +144,15 @@ class _InitialLoginContentState extends State<_InitialLoginContent> {
                     child: LoverButton(
                       onTap: () => emailProblem || passwordProblem
                           ? null
-                          : widget._provider.attemptLogin(),
+                          : widget._provider.attemptLogin(
+                              navigateAfterLogin: () =>
+                                  Navigator.of(loginScreenKey.currentContext!)
+                                      .push(
+                                MaterialPageRoute(
+                                  builder: (_) => const SuccessLoginScreen(),
+                                ),
+                              ),
+                            ),
                       text: 'Login',
                     ),
                   ),

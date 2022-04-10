@@ -3,7 +3,6 @@ import 'package:login_loveapp/common/theme/theme.dart';
 import 'package:login_loveapp/locator.dart';
 import 'package:login_loveapp/providers/login_provider.dart';
 import 'package:login_loveapp/screens/login_screen.dart';
-import 'package:login_loveapp/screens/success_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,13 +20,7 @@ class MyApp extends StatelessWidget {
       theme: loveappTheme,
       home: SafeArea(
         child: ChangeNotifierProvider(
-          create: (_) => LoginProvider(() {
-            Navigator.of(loginScreenKey.currentContext!).push(
-              MaterialPageRoute(
-                builder: (_) => const SuccessLoginScreen(),
-              ),
-            );
-          }),
+          create: (_) => LoginProvider(),
           child: const LoginScreen(),
         ),
       ),
