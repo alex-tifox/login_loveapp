@@ -119,56 +119,58 @@ class _InitialLoginContentState extends State<_InitialLoginContent> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 62,
-        left: 33,
-        right: 33,
-      ),
-      child: Column(
-        children: [
-          Assets.svgs.applover.svg(
-            height: 97 * 1.5,
-            width: 97 * 1.5,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 22,
-              bottom: 39,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 62,
+          left: 33,
+          right: 33,
+        ),
+        child: Column(
+          children: [
+            Assets.svgs.applover.svg(
+              height: 97 * 1.5,
+              width: 97 * 1.5,
             ),
-            child: Text(
-              'Login',
-              style: Theme.of(context).textTheme.headline4,
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 22,
+                bottom: 39,
+              ),
+              child: Text(
+                'Login',
+                style: Theme.of(context).textTheme.headline4,
+              ),
             ),
-          ),
-          LoverTextField(
-            hintText: 'Email address',
-            keyboardType: TextInputType.emailAddress,
-            controller: widget._provider.emailTextEditingController,
-          ),
-          const LoveappSpacer(),
-          LoverTextField(
-            hintText: 'Password',
-            isPasswordField: true,
-            controller: widget._provider.passwordTextEditingController,
-          ),
-          const LoveappSpacer(),
-          Opacity(
-            opacity: emailProblem || passwordProblem ? 0.6 : 1,
-            child: Row(
-              children: [
-                Expanded(
-                  child: LoverButton(
-                    onTap: () => emailProblem || passwordProblem
-                        ? null
-                        : widget._provider.attemptLogin(),
-                    text: 'Login',
+            LoverTextField(
+              hintText: 'Email address',
+              keyboardType: TextInputType.emailAddress,
+              controller: widget._provider.emailTextEditingController,
+            ),
+            const LoveappSpacer(),
+            LoverTextField(
+              hintText: 'Password',
+              isPasswordField: true,
+              controller: widget._provider.passwordTextEditingController,
+            ),
+            const LoveappSpacer(),
+            Opacity(
+              opacity: emailProblem || passwordProblem ? 0.6 : 1,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: LoverButton(
+                      onTap: () => emailProblem || passwordProblem
+                          ? null
+                          : widget._provider.attemptLogin(),
+                      text: 'Login',
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
